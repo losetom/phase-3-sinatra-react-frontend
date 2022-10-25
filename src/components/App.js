@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Home from './Home'
 import { Route, Routes } from 'react-router-dom'
 import GamesContainer from './GamesContainer'
+import NewGameForm from './NewGameForm'
 
 function App() {
 
