@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className='App'>
-        <p onClick={() => navigate("/games")}>Games</p>
+        <p onClick={() => ("/games")}>Games</p>
         <a href='/signup'>Signup</a>
         <a href='/addgame'>Add Games</a>
         <a href='/home'>Home</a>
