@@ -11,15 +11,31 @@ function App() {
     useEffect(() => {
         fetch("http://localhost:9292/games")
             .then((r) => r.json())
-            .then((games) => console.log(games));
+            .then((games) => setGames(games));
     }, []) 
+
+    function handleDeleteClick(id) {
+       // debugger
+      fetch(`http://localhost:9292/games/${id}`, {
+          method: "DELETE"
+      })
+      .then((r) => r.json())
+      .then((data) => {
+        let gamesCopy = JSON.parse(JSON.stringify(games))
+        gamesCopy = gamesCopy.filter(game => {
+            return game.id !== id
+        })
+        setGames(gamesCopy)
+         // onDeleteGame(game);
+      });
+  }
 
 
   return (
     <div className='App'>
         <Routes>
             <Route path="/home" element={<Home />}/>
-            <Route path="/games" element={<GamesContainer games={games}/>}/>
+            <Route path="/games" element={<GamesContainer games={games} onDeleteClick={handleDeleteClick}/>}/>
         </Routes>
     </div>
   )
