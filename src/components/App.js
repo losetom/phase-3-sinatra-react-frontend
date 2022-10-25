@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import Home from './Home'
-import { Route, Routes } from 'react-router-dom'
+import { useNavigate, Route, Routes } from 'react-router-dom'
 import GamesContainer from './GamesContainer'
 import NewGameForm from './NewGameForm'
 import SignUpForm from './SignUpForm'
@@ -39,14 +39,20 @@ function App() {
 
   return (
     <div className='App'>
+        <p onClick={() => navigate("/games")}>Games</p>
+        <a href='/signup'>Signup</a>
+        <a href='/addgame'>Add Games</a>
+        <a href='/home'>Home</a>
+        
         <Routes>
 
             <Route path="/home" element={<Home />}/>
-            <Route path="/signup" element={<SignUpForm />}/>
+            <Route path="/signup" element={<SignUpForm setCurrentUser={setCurrentUser}/>}/>
             <Route path="/addgame" element={<NewGameForm />}/>
             <Route path="/games" element={<GamesContainer games={games} onDeleteClick={handleDeleteClick}/>}/>
         </Routes>
     </div>
+    
   )
 }
 

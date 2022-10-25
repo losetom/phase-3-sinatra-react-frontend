@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from "react-router-dom"
 
-function SignUpForm() {
+function SignUpForm({ setCurrentUser }) {
         const [user, setUser] = useState({
             username: "",
             password: ""
         })
-
+        const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -18,7 +19,8 @@ function SignUpForm() {
         // fetch to POST users
         fetch("http://localhost:9292/users", config)
             .then((r) => r.json())
-            .then(data => console.log(data))
+            .then(data => setCurrentUser(data))
+            navigate("/games")
     }
 
     const handleChange = ({target}) => {
