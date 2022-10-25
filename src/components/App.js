@@ -4,10 +4,15 @@ import Home from './Home'
 import { Route, Routes } from 'react-router-dom'
 import GamesContainer from './GamesContainer'
 import NewGameForm from './NewGameForm'
+import SignUpForm from './SignUpForm'
 
 function App() {
 
     const [games, setGames] = useState([]);
+    // create state to hold current user
+    const [currentUser, setCurrentUser] = useState(null)
+    // pass the current user to the new game form
+    // add user in new game form
 
     useEffect(() => {
         fetch("http://localhost:9292/games")
@@ -35,7 +40,10 @@ function App() {
   return (
     <div className='App'>
         <Routes>
+
             <Route path="/home" element={<Home />}/>
+            <Route path="/signup" element={<SignUpForm />}/>
+            <Route path="/addgame" element={<NewGameForm />}/>
             <Route path="/games" element={<GamesContainer games={games} onDeleteClick={handleDeleteClick}/>}/>
         </Routes>
     </div>
