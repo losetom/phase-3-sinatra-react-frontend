@@ -11,7 +11,7 @@ function App() {
     useEffect(() => {
         fetch("http://localhost:9292/games")
             .then((r) => r.json())
-            .then((games) => setGames(games));
+            .then((games) => console.log(games));
     }, []) 
 
 
